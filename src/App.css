@@ -1,0 +1,169 @@
+/* Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+input, button, textarea, select {
+    font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+#root, #__next {
+    isolation: isolate;
+}
+
+:root {
+    font-family: Roboto,system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    line-height: 1.5;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    /*   Colors */
+    /*--body--bg: #eceff1;*/
+
+    --white:    #fff ;
+    --gray-100: #f8f9fa ;
+    --gray-200: #e9ecef ;
+    --gray-300: #dee2e6 ;
+    --gray-400: #ced4da ;
+    --gray-500: #adb5bd ;
+    --gray-600: #6c757d ;
+    --gray-700: #495057 ;
+    --gray-800: #343a40 ;
+    --gray-900: #212529 ;
+    --black:    #000 ;
+
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-200: #bfdbfe;
+    --blue-300: #93c5fd;
+    --blue-400: #60a5fa;
+    --blue-500: #3b82f6;
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --blue-800: #1e40af;
+    --blue-900: #1e3a8a;
+
+    --red-50: #fef2f2;
+    --red-100: #fee2e2;
+    --red-200: #fecaca;
+    --red-300: #fca5a5;
+    --red-400: #f87171;
+    --red-500: #ef4444;
+    --red-600: #dc2626;
+    --red-700: #b91c1c;
+    --red-800: #991b1b;
+    --red-900: #7f1d1d;
+
+    --green-50: #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-300: #86efac;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-900: #14532d;
+
+    --yellow-50: #fefce8;
+    --yellow-100: #fff3cd;
+    --yellow-200: #ffe69c;
+    --yellow-300: #ffda6a;
+    --yellow-400: #ffcd39;
+    --yellow-500: #ffc107;
+    --yellow-600: #cc9a06;
+    --yellow-700: #997404;
+    --yellow-800: #664d03;
+    --yellow-900: #332701;
+    
+    
+}
+
+body {
+    background-color: var(--gray-100);
+    color: #263238;
+    letter-spacing: 0.1px !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main-content {
+    display: flex;
+    margin-left: 18rem;
+    padding-top: 6rem;
+}
+
+.topnav {
+   margin-left: 16rem;
+}
+
+.userAvatar {
+    object-fit: cover;
+    width: 50px;
+    border-radius: 50%;
+}
+
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+.scrollbar {
+    overflow: overlay
+}
+
+/* total width */
+.scrollbar::-webkit-scrollbar {
+    background-color: rgba(0,0,0,0);
+    width: 16px;
+    height: 16px;
+    z-index: 999999;
+}
+
+/* background of the scrollbar except button or resizer */
+.scrollbar::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0);
+}
+
+/* scrollbar itself */
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0);
+    border-radius:16px;
+    border:0px solid #fff;
+}
+
+/* set button(top and bottom of the scrollbar) */
+.scrollbar::-webkit-scrollbar-button {
+    display:none;
+}
+
+
+/* scrollbar when element is hovered */
+.scrollbar:hover::-webkit-scrollbar-thumb {
+    background-color: var(--gray-400);
+    border:4px solid #fff;
+}
+
+/* scrollbar when scrollbar is hovered */
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color:var(--gray-400);
+    border:4px solid #f4f4f4
+}
+
