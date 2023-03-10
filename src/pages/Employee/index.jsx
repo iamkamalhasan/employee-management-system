@@ -3,14 +3,19 @@ import { alpha } from "@mui/material/styles";
 import { Box, Button, Grid, Paper, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import theme from "../../utils/theme.jsx";
-import { TrendingDown, TrendingUp, UserPlus } from "lucide-react";
+import {
+  Eye,
+  PlusCircle,
+  TrendingDown,
+  TrendingUp,
+  UserPlus,
+} from "lucide-react";
 import useFetch from "../../hooks/useFetch";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Employee = () => {
-  let i = 0;
   const [employeesData, setEmployeesData] = useState([]);
   const getAllEmployeeUrl = "http://localhost:9091/employee/findAll";
 
@@ -67,13 +72,12 @@ const Employee = () => {
       flex: 1,
     },
     {
-      field: "Edit",
+      field: "View",
       renderCell: (cellId) => {
         return (
           <Button
             variant="contained"
-            color="primary"
-            onClick={(event) => {
+            onClick={() => {
               navigate("/employee/profile", {
                 state: {
                   employee_id: cellId.id,
@@ -81,7 +85,7 @@ const Employee = () => {
               });
             }}
           >
-            Edit
+            View
           </Button>
         );
       },
@@ -163,7 +167,7 @@ const Employee = () => {
                 <Typography variant={`h3`} fontWeight={`medium`}>
                   {
                     employeesData.filter(
-                      (employee) => employee.status == "Active"
+                      (employee) => employee.status === "Active"
                     ).length
                   }
                 </Typography>

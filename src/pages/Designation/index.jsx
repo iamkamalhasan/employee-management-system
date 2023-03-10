@@ -73,6 +73,7 @@ const Designation = () => {
         fetchDesignation();
         handleSnackAddOpen();
         setAddDialogOpen(false);
+        setDesignationName("");
       })
       .catch((err) => {
         console.log(err);

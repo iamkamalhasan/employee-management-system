@@ -41,6 +41,11 @@ const Profile = () => {
   const [status, setStatus] = useState("");
   const [departmentName, setDepartmentName] = useState("");
   const [designationName, setDesignationName] = useState("");
+  const [payrollId, setPayrollId] = useState();
+  const [bonus, setBonus] = useState();
+  const [salary, setSalary] = useState();
+  const [paymentMode, setPaymentMode] = useState("");
+  const [paymentStatus, setPaymentStatus] = useState("");
   const [snackOpen, setSnackOpen] = useState(false);
 
   useEffect(() => {
@@ -75,6 +80,11 @@ const Profile = () => {
       setDateOfBirth(res.data.dateOfBirth);
       setDepartmentName(res.data.departmentName);
       setDesignationName(res.data.designationName);
+      setPayrollId(res.data.payroll.payrollId);
+      setSalary(res.data.payroll.salary);
+      setBonus(res.data.payroll.bonus);
+      setPaymentMode(res.data.payroll.paymentMode);
+      setPaymentStatus(res.data.payroll.status);
     });
   };
   const fetchDepartments = () => {
@@ -134,14 +144,31 @@ const Profile = () => {
         console.log(employmentType);
         break;
       case "experience":
-        setExperience(e.target.value);
-        console.log(experience);
+        if (e.target.value === "" || pattern.test(e.target.value)) {
+          setExperience(e.target.value);
+        }
         break;
       case "joinDate":
         setJoinDate(e.target.value);
         break;
       case "status":
         setStatus(e.target.value);
+        break;
+      case "salary":
+        if (e.target.value === "" || pattern.test(e.target.value)) {
+          setSalary(e.target.value);
+        }
+        break;
+      case "bonus":
+        if (e.target.value === "" || pattern.test(e.target.value)) {
+          setBonus(e.target.value);
+        }
+        break;
+      case "paymentMode":
+        setPaymentMode(e.target.value);
+        break;
+      case "paymentStatus":
+        setPaymentStatus(e.target.value);
         break;
       default:
         break;
@@ -162,6 +189,14 @@ const Profile = () => {
         employmentType: employmentType,
         departmentId: departmentId,
         designationId: designationId,
+        payroll: {
+          payrollId: payrollId,
+          bonus: bonus,
+          salary: salary,
+          totalSalary: parseInt(salary) + parseInt(bonus),
+          status: paymentStatus,
+          paymentMode: paymentMode,
+        },
       })
       .then((res) => {
         handleSnackOpen();
@@ -409,6 +444,69 @@ const Profile = () => {
                     <MenuItem disabled>Choose Status</MenuItem>
                     <MenuItem value="Active">Active</MenuItem>
                     <MenuItem value="Inactive">Inactive</MenuItem>
+                  </TextField>
+                </Stack>
+                <Stack direction="row" spacing={3} mb={4} mt={4}>
+                  <TextField
+                    id="salary"
+                    label="Salary"
+                    variant="outlined"
+                    name="salary"
+                    value={salary || ""}
+                    onChange={handleAddEmployeeChange}
+                    sx={{
+                      display: "flex",
+                      flex: 1,
+                    }}
+                    required
+                  />
+                  <TextField
+                    id="bonus"
+                    name="bonus"
+                    label="Bonus"
+                    value={bonus || ""}
+                    variant="outlined"
+                    onChange={handleAddEmployeeChange}
+                    sx={{
+                      display: "flex",
+                      flex: 1,
+                    }}
+                    required
+                  />
+                </Stack>
+                <Stack direction={`row`} spacing={3} mt={4} mb={4}>
+                  <TextField
+                    name="paymentMode"
+                    value={paymentMode}
+                    onChange={handleAddEmployeeChange}
+                    select
+                    label="Payment Mode"
+                    sx={{
+                      display: "flex",
+                      flex: 1,
+                    }}
+                    required
+                  >
+                    <MenuItem disabled>Payment Mode</MenuItem>
+                    <MenuItem value="NEFT">NEFT</MenuItem>
+                    <MenuItem value="Check">Check</MenuItem>
+                    <MenuItem value="Cash">Cash</MenuItem>
+                  </TextField>
+                  <TextField
+                    name="paymentStatus"
+                    value={paymentStatus}
+                    onChange={handleAddEmployeeChange}
+                    select // tell TextField to render select
+                    label="Payment Status"
+                    sx={{
+                      display: "flex",
+                      flex: 1,
+                    }}
+                    required
+                  >
+                    <MenuItem disabled>Payment Status</MenuItem>
+                    <MenuItem value="Paid">Paid</MenuItem>
+                    <MenuItem value="Yet to be paid">Yet to be paid</MenuItem>
                   </TextField>
                 </Stack>
                 <Stack direction={`row`} spacing={3} mt={4}>

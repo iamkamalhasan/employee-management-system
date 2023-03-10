@@ -3,15 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import navStyle from "./Sidenav.module.css";
 import {
   LayoutGrid,
-  FolderOpen,
   Users,
   CalendarCheck,
-  DollarSign,
   Award,
   GitFork,
-  LogOut,
-  Boxes,
   Crown,
+  FolderCog,
 } from "lucide-react";
 import SquareShiftLogo from "../../assets/brand/SquareShiftLogo.jsx";
 
@@ -28,7 +25,7 @@ const Sidenav = () => {
     {
       id: 2,
       title: "Project",
-      icon: <FolderOpen size={20} />,
+      icon: <FolderCog size={20} />,
       link: "/project",
     },
     // {

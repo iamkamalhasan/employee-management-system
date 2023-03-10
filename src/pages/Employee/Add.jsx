@@ -103,8 +103,9 @@ const Add = () => {
         console.log(employmentType);
         break;
       case "experience":
-        setExperience(e.target.value);
-        console.log(experience);
+        if (e.target.value === "" || pattern.test(e.target.value)) {
+          setExperience(e.target.value);
+        }
         break;
       case "joinDate":
         setJoinDate(e.target.value);
@@ -147,12 +148,12 @@ const Add = () => {
         joinDate: joinDate,
         name: name,
         phoneNumber: phone,
-        status: "Active",
+        status: status,
         payroll: {
           bonus: bonus,
           salary: salary,
-          status: "Paid or Yet to be paid",
-          paymentMode: "DD NEFT",
+          status: paymentStatus,
+          paymentMode: paymentMode,
         },
       })
       .then((res) => {
@@ -169,6 +170,10 @@ const Add = () => {
         setDepartmentId("");
         setDateOfBirth(" ");
         setAddress("");
+        setSalary("");
+        setBonus("");
+        setPaymentMode("");
+        setPaymentStatus("");
       });
   };
 
@@ -414,8 +419,8 @@ const Add = () => {
                     required
                   >
                     <MenuItem disabled>Choose Status</MenuItem>
-                    <MenuItem value="Full-Time">Active</MenuItem>
-                    <MenuItem value="Intern">Inactive</MenuItem>
+                    <MenuItem value="Active">Active</MenuItem>
+                    <MenuItem value="Inactive">Inactive</MenuItem>
                   </TextField>
                 </Stack>
                 <Stack direction="row" spacing={3} mb={4}>
@@ -465,11 +470,11 @@ const Add = () => {
                     <MenuItem value="Cash">Cash</MenuItem>
                   </TextField>
                   <TextField
-                    name="status"
-                    value={status}
+                    name="paymentStatus"
+                    value={paymentStatus}
                     onChange={handleAddEmployeeChange}
                     select // tell TextField to render select
-                    label="Status"
+                    label="Payment Status"
                     sx={{
                       display: "flex",
                       flex: 1,
@@ -477,8 +482,8 @@ const Add = () => {
                     required
                   >
                     <MenuItem disabled>Payment Status</MenuItem>
-                    <MenuItem value="Full-Time">Active</MenuItem>
-                    <MenuItem value="Intern">Inactive</MenuItem>
+                    <MenuItem value="Paid">Paid</MenuItem>
+                    <MenuItem value="Yet to be paid">Yet to be paid</MenuItem>
                   </TextField>
                 </Stack>
                 <Stack direction={`row`} spacing={3} mt={4}>

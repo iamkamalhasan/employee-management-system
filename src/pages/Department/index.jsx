@@ -73,6 +73,7 @@ const Department = () => {
         fetchDepartment();
         handleSnackAddOpen();
         setAddDialogOpen(false);
+        setDepartmentName("");
       })
       .catch((err) => {
         console.log(err);
